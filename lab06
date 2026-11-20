@@ -1,0 +1,24 @@
+def to_base(n, base):
+    if n == 0:
+        return "0"
+    digits = "0123456789ABCDEF"
+    res = ""
+    while n > 0:
+        res = digits[n % base] + res
+        n //= base
+    return res
+
+def from_base(s, base):
+    digits = "0123456789ABCDEF"
+    res = 0
+    for char in s.upper():
+        res = res * base + digits.index(char)
+    return res
+
+assert to_base(0, 2) == "0"
+assert to_base(178, 2) == "10110010"
+assert to_base(178, 16) == "B2"
+assert from_base("11011001", 2) == 217
+assert from_base("1F8", 16) == 504
+
+print("Все тесты пройдены успешно!")
